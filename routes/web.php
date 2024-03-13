@@ -13,6 +13,15 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+
+
+
+Route::get('/alunos', [App\Http\Controllers\AlunoController::class, 'listar']) -> name('alunos.listar');
+Route::get('/alunos/{id}', [App\Http\Controllers\AlunoController::class, 'listarID']);
+
+Route::get('novoAluno', [App\Http\Controllers\AlunoController::class, 'criar']);
+
+Route::post('salvarAluno', [App\Http\Controllers\AlunoController::class, 'store']) -> name('alunos.salvar');
+
+Route::post('editarAluno', [App\Http\Controllers\AlunoController::class, 'update']) -> name('alunos.editar');
+
